@@ -122,10 +122,9 @@
 }
 
 .cm-s-default {
-	color: black;
-
 	font-family: Menlo, monospace;
 	font-size: 11px;
+	color: black;
 }
 
 .cm-s-default :matches(.cm-comment, .css-comment, .javascript-comment, .html-comment) {

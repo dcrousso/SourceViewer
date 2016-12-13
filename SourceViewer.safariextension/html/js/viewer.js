@@ -3,6 +3,8 @@
 const LINK = document.createElement("a");
 LINK.href = decodeURIComponent(window.location.search.substr(1));
 
+const SETTINGS = JSON.parse(decodeURIComponent(window.location.hash.substr(1)));
+
 document.title = `view-source:${LINK.href}`;
 
 document.body.addEventListener("click", event => {
@@ -30,11 +32,11 @@ fetch(LINK.href)
 	CodeMirror(document.body, {
 		cursorBlinkRate: -1,
 		lineNumbers: true,
-		lineWrapping: true,
+		lineWrapping: SETTINGS["lineWrapping"],
 		maxHighlightLength: Infinity,
-		mode: "htmlmixed",
+		mode: (SETTINGS["highlightSyntax"] ? "htmlmixed" : null),
 		readOnly: true,
-		showWhitespaceCharacters: true,
+		showWhitespaceCharacters: SETTINGS["showWhitespaceCharacters"],
 		value: text,
 	});
 });
