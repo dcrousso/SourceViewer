@@ -11,6 +11,8 @@ fetch(URL)
 		cursorBlinkRate: -1,
 		lineNumbers: true,
 		lineWrapping: true,
+		maxHighlightLength: Infinity,
+		mode: "htmlmixed",
 		readOnly: true,
 		value: text,
 	});
