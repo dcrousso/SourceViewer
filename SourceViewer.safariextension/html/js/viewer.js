@@ -1,7 +1,7 @@
 "use strict";
 
 const LINK = document.createElement("a");
-LINK.href = window.location.search.substr(1);
+LINK.href = decodeURIComponent(window.location.search.substr(1));
 
 document.title = `view-source:${LINK.href}`;
 
@@ -15,8 +15,10 @@ document.body.addEventListener("click", event => {
 			newTabURL = LINK.protocol + newTabURL;
 		else if (newTabURL.startsWith("/"))
 			newTabURL = LINK.protocol + "//" + LINK.host + newTabURL;
-		else
-			newTabURL = LINK.href + newTabURL;
+		else {
+			let path = LINK.protocol + "//" + LINK.host + LINK.pathname;
+			newTabURL = path.substr(0, path.lastIndexOf("/") + 1) + newTabURL;
+		}
 	}
 
 	safari.self.tab.dispatchMessage("open-link", newTabURL);

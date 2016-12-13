@@ -10,7 +10,7 @@
 		case "view-page-source":
 			var tab = activeBrowserWindow.openTab();
 			activeBrowserWindow.insertTab(tab, index + 1);
-			tab.url = safari.extension.baseURI + "html/viewer.html?" + url;
+			tab.url = safari.extension.baseURI + "html/viewer.html?" + encodeURIComponent(url);
 			break;
 
 		case "open-link":
