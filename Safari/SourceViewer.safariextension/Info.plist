@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Context Menu Items</key>
@@ -31,6 +31,23 @@
 		</array>
 		<key>Global Page</key>
 		<string>js/background.html</string>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>view-page-source</string>
+				<key>Identifier</key>
+				<string>view-page-source</string>
+				<key>Image</key>
+				<string>images/code.png</string>
+				<key>Include By Default</key>
+				<true/>
+				<key>Label</key>
+				<string>View Page Source</string>
+				<key>Tool Tip</key>
+				<string>View Page Source</string>
+			</dict>
+		</array>
 	</dict>
 	<key>Description</key>
 	<string>View the source of any page in a new tab</string>
