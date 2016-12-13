@@ -1,0 +1,178 @@
+/*
+ * Copied from:
+ *  - https://trac.webkit.org/browser/trunk/Source/WebInspectorUI/UserInterface/Views/CodeMirrorOverrides.css
+ *  - https://trac.webkit.org/browser/trunk/Source/WebInspectorUI/UserInterface/Views/SyntaxHighlightingDefaultTheme.css
+ */
+
+.CodeMirror pre {
+	padding: 0 3px 0 7px;
+}
+
+.CodeMirror .CodeMirror-selected {
+	background-color: hsl(0, 0%, 83%);
+}
+
+.CodeMirror.CodeMirror-focused .CodeMirror-selected {
+	background-color: highlight;
+}
+
+.CodeMirror .CodeMirror-cursor {
+	pointer-events: none;
+}
+
+.CodeMirror .CodeMirror-gutters {
+	background-color: hsl(0, 0%, 96%);
+	border-right: 1px solid hsl(0, 0%, 90%);
+}
+
+.CodeMirror .CodeMirror-linenumber {
+	min-width: 22px;
+	padding: 0 2px;
+	font: 8px/13px -apple-system, Menlo, Monaco, monospace;
+	font-variant-numeric: tabular-nums;
+	text-align: right;
+	color: hsl(0, 0%, 57%);
+}
+
+.CodeMirror-linewidget {
+	-webkit-user-select: text;
+}
+
+.CodeMirror .cm-tab {
+	position: relative;
+}
+
+.CodeMirror .cm-tab::before {
+	position: absolute;
+	bottom: 50%;
+	left: 5%;
+	width: 90%;
+	content: "";
+	border-bottom: 1px solid hsl(0, 0%, 70%);
+}
+
+.CodeMirror .cm-whitespace::before {
+	position: absolute;
+	color: hsl(0, 0%, 70%);
+	pointer-events: none;
+}
+
+.CodeMirror .cm-whitespace-1::before {
+	content: "\00B7";
+}
+
+.CodeMirror .cm-whitespace-2::before {
+	content: "\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-3::before {
+	content: "\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-4::before {
+	content: "\00B7\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-5::before {
+	content: "\00B7\00B7\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-6::before {
+	content: "\00B7\00B7\00B7\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-7::before {
+	content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-8::before {
+	content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-9::before {
+	content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-10::before {
+	content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-11::before {
+	content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-12::before {
+	content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-13::before {
+	content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-14::before {
+	content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-15::before {
+	content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+}
+
+.CodeMirror .cm-whitespace-16::before {
+	content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+}
+
+.cm-s-default {
+	color: black;
+
+	font-family: Menlo, monospace;
+	font-size: 11px;
+}
+
+.cm-s-default :matches(.cm-comment, .css-comment, .javascript-comment, .html-comment) {
+	color: hsl(119, 100%, 22%);
+}
+
+.cm-s-default :matches(.cm-tag, .cm-bracket, .cm-atom, .cm-keyword, .cm-m-javascript.cm-builtin, .css-keyword, .css-tag, .css-at-rule, .css-important, .javascript-keyword, .html-tag),
+.cm-s-default .cm-m-css:matches(.cm-atom, .cm-meta, .cm-variable-2, .cm-variable-3, .cm-property) {
+	color: hsl(309, 85%, 35%);
+}
+
+.cm-s-default :matches(.cm-number, .cm-atom.cm-hex-color, .css-number, .javascript-number) {
+	color: hsl(248, 100%, 40%);
+}
+
+.cm-s-default :matches(.cm-def, .cm-operator, .cm-variable, .cm-variable-2, .css-property, .css-selector, .javascript-ident),
+.cm-s-default .cm-m-css:matches(.cm-tag, .cm-string-2, .cm-builtin, .cm-qualifier) {
+	color: inherit;
+}
+
+.cm-s-default :matches(.cm-string, .css-string, .javascript-string, .html-attribute-value) {
+	color: hsl(1, 79%, 42%);
+}
+
+.cm-s-default :matches(.cm-string-2, .javascript-regexp) {
+	color: hsl(20, 100%, 44%);
+}
+
+.cm-s-default :matches(.html-doctype, .html-processing-instruction, .cm-m-xml.cm-meta) {
+	color: hsl(0, 0%, 75%);
+}
+
+.cm-s-default :matches(.html-attribute-name, .cm-m-xml.cm-attribute) {
+	color: hsl(44, 53%, 33%);
+}
+
+.cm-s-default a {
+	color: hsl(240, 100%, 52%);
+}
+
+.cm-s-default .cm-link,
+.cm-s-default a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.cm-s-default .cm-link:hover,
+.cm-s-default a:hover {
+	text-decoration: underline;
+}

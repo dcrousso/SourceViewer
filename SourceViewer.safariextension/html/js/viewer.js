@@ -32,6 +32,7 @@ fetch(LINK.href)
 		maxHighlightLength: Infinity,
 		mode: "htmlmixed",
 		readOnly: true,
+		showWhitespaceCharacters: true,
 		value: text,
 	});
 });
