@@ -29,6 +29,11 @@ document.body.addEventListener("click", event => {
 fetch(LINK.href)
 .then(response => response.text())
 .then(text => {
+	let dom = (new DOMParser).parseFromString(text, "text/html");
+	let base = Array.from(dom.getElementsByTagName("base")).pop();
+	if (base)
+		LINK.href = base.href;
+
 	CodeMirror(document.body, {
 		cursorBlinkRate: -1,
 		lineNumbers: true,
