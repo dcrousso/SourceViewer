@@ -1,18 +1,25 @@
 <script>
 	"use strict";
 
-	safari.application.addEventListener("command", event => {
-		if (event.command !== "view-page-source")
-			return;
-
+	function handleEvent(event) {
 		let activeBrowserWindow = safari.application.activeBrowserWindow;
 		let url = activeBrowserWindow.activeTab.url;
 		let index = activeBrowserWindow.tabs.indexOf(activeBrowserWindow.activeTab);
 
-		let tab = activeBrowserWindow.openTab();
+		switch (event.command || event.name) {
+		case "view-page-source":
+			var tab = activeBrowserWindow.openTab();
+			activeBrowserWindow.insertTab(tab, index + 1);
+			tab.url = safari.extension.baseURI + "html/viewer.html?" + url;
+			break;
 
-		activeBrowserWindow.insertTab(tab, index + 1);
-
-		tab.url = safari.extension.baseURI + "html/viewer.html?" + url;
-	});
+		case "open-link":
+			var tab = activeBrowserWindow.openTab();
+			activeBrowserWindow.insertTab(tab, index + 1);
+			tab.url = event.message;
+			break;
+		}
+	}
+	safari.application.addEventListener("command", handleEvent);
+	safari.application.addEventListener("message", handleEvent);
 </script>
