@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Devin Rousso</string>
+	<key>Builder Version</key>
+	<string>12603.1.14.2</string>
+	<key>CFBundleDisplayName</key>
+	<string>SourceViewer</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.dcrousso.sourceviewer</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.0.0</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Context Menu Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>view-page-source</string>
+				<key>Identifier</key>
+				<string>view-page-source</string>
+				<key>Title</key>
+				<string>View Page Source</string>
+			</dict>
+		</array>
+		<key>Global Page</key>
+		<string>js/background.html</string>
+	</dict>
+	<key>Description</key>
+	<string>View the source of any page in a new tab</string>
+	<key>DeveloperIdentifier</key>
+	<string>0000000000</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
+	</dict>
+	<key>Update Manifest URL</key>
+	<string>http://devinrousso.com/projects/SourceViewer/SafariUpdate.plist</string>
+	<key>Website</key>
+	<string>http://devinrousso.com</string>
+</dict>
+</plist>

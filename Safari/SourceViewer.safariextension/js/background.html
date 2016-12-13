@@ -1,0 +1,18 @@
+<script>
+	"use strict";
+
+	safari.application.addEventListener("command", event => {
+		if (event.command !== "view-page-source")
+			return;
+
+		let activeBrowserWindow = safari.application.activeBrowserWindow;
+		let url = activeBrowserWindow.activeTab.url;
+		let index = activeBrowserWindow.tabs.indexOf(activeBrowserWindow.activeTab);
+
+		let tab = activeBrowserWindow.openTab();
+
+		activeBrowserWindow.insertTab(tab, index + 1);
+
+		tab.url = safari.extension.baseURI + "html/viewer.html?" + url;
+	});
+</script>
