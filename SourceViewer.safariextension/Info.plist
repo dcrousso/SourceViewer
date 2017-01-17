@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Devin Rousso</string>
 	<key>Builder Version</key>
-	<string>12603.1.14.2</string>
+	<string>12604.1.2</string>
 	<key>CFBundleDisplayName</key>
 	<string>SourceViewer</string>
 	<key>CFBundleIdentifier</key>
@@ -62,7 +62,7 @@
 	<key>Description</key>
 	<string>View the source of any page in a new tab</string>
 	<key>DeveloperIdentifier</key>
-	<string>0000000000</string>
+	<string>Q5M4T22BE9</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
