@@ -26,22 +26,25 @@ document.body.addEventListener("click", event => {
 	safari.self.tab.dispatchMessage("open-link", newTabURL);
 });
 
-fetch(LINK.href)
-.then(response => response.text())
-.then(text => {
-	let dom = (new DOMParser).parseFromString(text, "text/html");
-	let base = Array.from(dom.getElementsByTagName("base")).pop();
-	if (base)
-		LINK.href = base.href;
+let xhr = new XMLHttpRequest;
+xhr.addEventListener("load", event => {
+	if (xhr.status === 200) {
+		let dom = (new DOMParser).parseFromString(xhr.response, "text/html");
+		let base = Array.from(dom.getElementsByTagName("base")).pop();
+		if (base)
+			LINK.href = base.href;
+	}
 
 	CodeMirror(document.body, {
 		cursorBlinkRate: -1,
 		lineNumbers: true,
 		lineWrapping: SETTINGS["lineWrapping"],
 		maxHighlightLength: Infinity,
-		mode: (SETTINGS["highlightSyntax"] ? "htmlmixed" : null),
+		mode: SETTINGS["highlightSyntax"] ? "htmlmixed" : null,
 		readOnly: true,
 		showWhitespaceCharacters: SETTINGS["showWhitespaceCharacters"],
-		value: text,
+		value: xhr.status === 200 ? xhr.response : `Unable to load "${LINK.href}"`,
 	});
 });
+xhr.open("GET", LINK.href, true);
+xhr.send();
