@@ -1,7 +1,7 @@
 <script>
 	"use strict";
 
-	function handleEvent(event) {
+	function handleMessage(event) {
 		let activeBrowserWindow = safari.application.activeBrowserWindow;
 		let url = activeBrowserWindow.activeTab.url;
 		let index = activeBrowserWindow.tabs.indexOf(activeBrowserWindow.activeTab);
@@ -24,6 +24,27 @@
 			break;
 		}
 	}
-	safari.application.addEventListener("command", handleEvent);
-	safari.application.addEventListener("message", handleEvent);
+	safari.application.addEventListener("command", handleMessage);
+	safari.application.addEventListener("message", handleMessage);
+
+	function handleURL(event) {
+		let url = null;
+		if (event) {
+			if (event.url)
+				url = event.url;
+			else if (event.query)
+				url = event.query;
+		}
+		if (!url || !url.startsWith("view-source:"))
+			return;
+
+		url = url.substring(12).trim();
+		if (!url.startsWith("http://") || !url.startsWith("https://"))
+			url = "http://" + url;
+
+		event.preventDefault();
+		event.target.url = safari.extension.baseURI + "html/viewer.html?" + encodeURIComponent(url);
+	}
+	safari.application.addEventListener("beforeNavigate", handleURL, true);
+	safari.application.addEventListener("beforeSearch", handleURL, true);
 </script>
