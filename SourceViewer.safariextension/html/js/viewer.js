@@ -3,8 +3,6 @@
 const LINK = document.createElement("a");
 LINK.href = decodeURIComponent(window.location.search.substr(1));
 
-const SETTINGS = JSON.parse(decodeURIComponent(window.location.hash.substr(1)));
-
 document.title = `view-source:${LINK.href}`;
 
 document.body.addEventListener("click", event => {
@@ -26,8 +24,26 @@ document.body.addEventListener("click", event => {
 	safari.self.tab.dispatchMessage("open-link", newTabURL);
 });
 
+let settings = null;
+safari.self.addEventListener("message", event => {
+	if (event.name !== "get-settings")
+		return;
+
+	settings = JSON.parse(event.message);
+
+	render();
+});
+safari.self.tab.dispatchMessage("get-settings");
+
 let xhr = new XMLHttpRequest;
-xhr.addEventListener("load", event => {
+xhr.addEventListener("load", render);
+xhr.open("GET", LINK.href, true);
+xhr.send();
+
+function render() {
+	if (!settings || xhr.readyState !== XMLHttpRequest.DONE)
+		return;
+
 	if (xhr.status === 200) {
 		let dom = (new DOMParser).parseFromString(xhr.response, "text/html");
 		let base = Array.from(dom.getElementsByTagName("base")).pop();
@@ -38,13 +54,11 @@ xhr.addEventListener("load", event => {
 	CodeMirror(document.body, {
 		cursorBlinkRate: -1,
 		lineNumbers: true,
-		lineWrapping: SETTINGS["lineWrapping"],
+		lineWrapping: settings["lineWrapping"],
 		maxHighlightLength: Infinity,
-		mode: SETTINGS["highlightSyntax"] ? "htmlmixed" : null,
+		mode: settings["highlightSyntax"] ? "htmlmixed" : null,
 		readOnly: true,
-		showWhitespaceCharacters: SETTINGS["showWhitespaceCharacters"],
+		showWhitespaceCharacters: settings["showWhitespaceCharacters"],
 		value: xhr.status === 200 ? xhr.response : `Unable to load "${LINK.href}"`,
 	});
-});
-xhr.open("GET", LINK.href, true);
-xhr.send();
+}
