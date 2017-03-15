@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Devin Rousso</string>
 	<key>Builder Version</key>
-	<string>12604.1.5</string>
+	<string>12604.1.8.1.2</string>
 	<key>CFBundleDisplayName</key>
 	<string>SourceViewer</string>
 	<key>CFBundleIdentifier</key>
@@ -76,8 +76,8 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>http://devinrousso.com/projects/SourceViewer/SafariUpdate.plist</string>
+	<string>https://devinrousso.com/projects/SourceViewer/SafariUpdate.plist</string>
 	<key>Website</key>
-	<string>http://devinrousso.com</string>
+	<string>https://devinrousso.com</string>
 </dict>
 </plist>
